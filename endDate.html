@@ -1,12 +1,12 @@
 <script type="text/javascript">
+//期数
 var term = 20;
+//判断闰年
 isLeapYear = function(dateYear)
 {
     return (0==dateYear%4&&((dateYear%100!=0)||(dateYear%400==0)));
 }
-
-
-
+//根据是否是闰年获取2月末日期
 getLeapYearFlagDate = function(dateYear){
 var flagDate;
 if(isLeapYear(dateYear)){
@@ -16,9 +16,9 @@ flagDate = 28;
 }
 return flagDate;
 }
-
+//判断是否是每月的月末
 getEndFlagDate = function(dateYear,dateMonth,dateDay){
-
+//根据是否是闰年获取2月末日期
 var flagDate = getLeapYearFlagDate(dateYear);
 var EndFlag;
 if((dateMonth ===2 && dateDay===flagDate)
@@ -38,10 +38,9 @@ return EndFlag = true;
 return EndFlag = false;
 }
 }
-
-
-
+//获取结束日期
 setEndDate = function(dateYear,dateMonth,dateDay){
+    //判断是否是每月的月末
  var EndFlag = getEndFlagDate(dateYear,dateMonth,dateDay);
 
 var endYear,endMonth,endDate;
@@ -52,7 +51,7 @@ yearAdd = parseInt(endMonth/12);
 endMonth = endMonth%12;
 endYear = endYear+yearAdd;
 }
-
+//计算结束日
 if(EndFlag){
 switch(endMonth)
 {
